@@ -2,7 +2,8 @@ FROM registry.cn-shenzhen.aliyuncs.com/xiaoxijin/apline:latest
 
 Maintainer Xijin Xiao (http://github.com/xiaoxijin/)
 
-RUN apk add mysql && \
+RUN apk update && \
+    apk add mysql && \
     apk --update add curl bash openjdk8-jre-base && \
     rm -rf /var/cache/apk/*
 
