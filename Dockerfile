@@ -1,4 +1,4 @@
-FROM registry.cn-shenzhen.aliyuncs.com/xiaoxijin/apline:latest
+FROM alpine:latest
 
 Maintainer Xijin Xiao (http://github.com/xiaoxijin/)
 
