@@ -4,6 +4,8 @@ Maintainer Xijin Xiao (http://github.com/xiaoxijin/)
 
 RUN apk update && \
     apk add mysql && \
+    cd /work && \
+    mkdir mysqld &&\
     chmod 777 /work/mysqld && \
     apk --update add curl bash openjdk8-jre-base && \
     rm -rf /var/cache/apk/*
