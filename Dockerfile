@@ -1,20 +1,12 @@
-FROM alpine:latest
+FROM zhangfeiyu2005/mysql
 
-Maintainer Xijin Xiao (http://github.com/xiaoxijin/)
+# Install cURL
+RUN echo -e "https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/main\n\
+https://mirror.tuna.tsinghua.edu.cn/alpine/v3.4/community" > /etc/apk/repositories
 
-RUN apk update && \
-    apk add mysql && \
-    apk --update add curl bash openjdk8-jre-base && \
-    rm -rf /var/cache/apk/*
+RUN apk --update add curl bash openjdk8-jre-base && \
+      rm -rf /var/cache/apk/*
 
-ADD install.sh $WORK_DIR
-ADD init.sql $WORK_DIR
-RUN sh ${WORK_DIR}"install.sh"
-ADD my.cnf /etc/mysql/my.cnf
-
+# Set environment
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 ENV PATH ${PATH}:${JAVA_HOME}/bin
-
-USER mysql
-EXPOSE 3306
-CMD ["/usr/bin/mysqld_safe"]
