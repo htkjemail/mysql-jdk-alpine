@@ -1,5 +1,7 @@
 FROM zhangfeiyu2005/mysql
 
+USER root
+
 RUN apk --update add curl bash openjdk8-jre-base && \
       rm -rf /var/cache/apk/*
 
